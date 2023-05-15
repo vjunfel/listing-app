@@ -1,4 +1,4 @@
-const myForm = documenlogt.querySelector('#my-form');
+const myForm = document.querySelector('#my-form');
 const myField = document.querySelector('#my-field');
 const myList = document.querySelector('#my-list');
 const btnDelete = document.querySelector('.btnDelete');
