@@ -168,6 +168,10 @@ i{
     cursor:pointer;
 }
 
+.asterisk {
+    font-size: x-large;
+}
+
 
 /* ******************************************************* */
 @media (max-width: 1024px){ 

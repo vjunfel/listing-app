@@ -1,22 +1,17 @@
-const myForm = document.querySelector('#my-form');
+const myForm = documenlogt.querySelector('#my-form');
 const myField = document.querySelector('#my-field');
 const myList = document.querySelector('#my-list');
 const btnDelete = document.querySelector('.btnDelete');
 const clearAll = document.querySelector('#clear');
 const filter = document.querySelector('#filter');
 
-// Event Listener
-myForm.addEventListener('submit', createItem);
-myList.addEventListener('click', onClickItem);
-clearAll.addEventListener('click', clearLists);
-filter.addEventListener('keyup', filterItem);
-document.addEventListener('DOMContentLoaded', displayItems);
-
 function displayItems() {
 	const itemsFromStorage = getItemsFromStorage();
 	itemsFromStorage.forEach((item) => {
 		addItemToDOM(item);
 	});
+
+	checkUI();
 }
 
 function createItem(e) {
@@ -29,7 +24,7 @@ function createItem(e) {
 
 		setTimeout(() => {
 			warningMessage.classList.remove('warn');
-		}, 2000);
+		}, 2500);
 	} else {
 		addItemToDOM(inputValue);
 		addToLocalStorage(inputValue);
@@ -109,7 +104,10 @@ function clearLists() {
 		while (myList.firstChild) {
 			myList.firstChild.remove();
 		}
+	} else {
+		return;
 	}
+
 	// Clear local storage
 	localStorage.clear('items');
 	checkUI();
@@ -148,3 +146,10 @@ function filterItem(e) {
 }
 
 checkUI();
+
+// Event Listener
+myForm.addEventListener('submit', createItem);
+myList.addEventListener('click', onClickItem);
+clearAll.addEventListener('click', clearLists);
+filter.addEventListener('keyup', filterItem);
+document.addEventListener('DOMContentLoaded', displayItems);

@@ -24,7 +24,10 @@
     </header>
 
     <section id="listing" class="container">
-      <p class="hide" id="warning">*Pls add a valid  item</p>
+      <p class="hide" id="warning">
+        <span class="asterisk"> * </span> 
+        Pls add a valid  item
+      </p>
 
       <form id="my-form">
         <input id='my-field' 
@@ -50,11 +53,7 @@
       </div>
 
       <h2 class="list-item">List Items</h2>
-      <ul id="my-list">
-        <!-- <li>Shoe <button class="btnDelete"><i class="fa fa-xmark"></i></button></li>
-        <li>Banana <button class="btnDelete"><i class="fa fa-xmark"></i></button></li>
-        <li>Car Repair <button class="btnDelete"><i class="fa fa-xmark"></i></button></li> -->
-      </ul> 
+      <ul id="my-list"> </ul> 
 
       <div class="clear-items">
         <button id="clear">Clear All</button>
@@ -68,7 +67,6 @@
         const year = date.getFullYear()
         return `${month} / ${days} / ${year}`
     }
-    console.log(formatDate())
     </script>
 
 </body>
