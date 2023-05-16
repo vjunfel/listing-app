@@ -4,6 +4,8 @@ const myList = document.querySelector('#my-list');
 const btnDelete = document.querySelector('.btnDelete');
 const clearAll = document.querySelector('#clear');
 const filter = document.querySelector('#filter');
+const formBtn = document.querySelector('#formBtn')
+let isEditMode = false;
 
 function displayItems() {
 	const itemsFromStorage = getItemsFromStorage();
@@ -26,6 +28,17 @@ function createItem(e) {
 			warningMessage.classList.remove('warn');
 		}, 2500);
 	} else {
+		if(isEditMode){
+			const itemToEdit = myList.querySelector('.edit-mode')
+
+			removeItemFromStorage(itemToEdit.textContent);
+			itemToEdit.classList.remove('edit-mode');
+			itemToEdit.remove();
+			formBtn.innerText = 'Add Item';
+			formBtn.style.backgroundColor = '#ff7423';
+			isEditMode = false;
+		}
+
 		addItemToDOM(inputValue);
 		addToLocalStorage(inputValue);
 	}
@@ -36,6 +49,7 @@ function createItem(e) {
 
 function addItemToDOM(newItem) {
 	const li = document.createElement('li');
+	li.className = 'item-list';
 	li.appendChild(document.createTextNode(newItem));
 
 	const button = createBtn('btnDelete');
@@ -78,7 +92,19 @@ function createIcon(classes) {
 function onClickItem(e) {
 	if (e.target.parentElement.classList.contains('btnDelete')) {
 		removeItem(e.target.parentElement.parentElement);
+	} else {
+		setItemToEdit(e.target)
+		formBtn.innerHTML = '<i class="fa-solid fa-pen"></i> Update Item'
 	}
+}
+
+function setItemToEdit(item){
+	isEditMode = true;
+	myList.querySelectorAll('li').forEach(i => i.classList.remove('edit-mode'))
+
+	item.classList.add('edit-mode');
+	formBtn.style.backgroundColor = '#007533';
+	myField.value = item.textContent;
 }
 
 function removeItem(item) {

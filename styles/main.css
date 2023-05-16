@@ -12,6 +12,7 @@
     --primary-color: #1a1e20;
     --secondary-color: #ffffff;
     --tertiary-color: #ff7423;
+    --green-color: #007533;
 }
 
 .dark-theme{
@@ -172,6 +173,17 @@ i{
     font-size: x-large;
 }
 
+.edit-mode{
+    color: #808080;
+}
+
+.fa-pen{
+    font-size: small;
+}
+
+.item-list{
+    cursor: pointer;
+}
 
 /* ******************************************************* */
 @media (max-width: 1024px){ 
